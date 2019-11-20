@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Spawning : MonoBehaviour
 {
+    int test;
     // Start is called before the first frame update
     private PhotonView PV;
     public GameObject myAvatar;
