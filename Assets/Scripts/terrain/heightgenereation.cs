@@ -27,7 +27,7 @@ public class heightgenereation : MonoBehaviour
     void Update()
     {
         
-
+        //hi
     }
     void CalcNoise()
     {
