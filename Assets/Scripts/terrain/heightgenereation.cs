@@ -26,8 +26,7 @@ public class heightgenereation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        //hi
+
     }
     void CalcNoise()
     {
