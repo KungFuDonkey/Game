@@ -37,7 +37,7 @@ public class playerLook : MonoBehaviour
         fireTimer -= Time.deltaTime;
         if (Input.GetMouseButton(0) && fireTimer < 0)
         {
-            GameSetupController.GS.CreateProjectile(projectileSpawner.position, transform.rotation, playerbody.name + "b");
+            GameController.GS.CreateProjectile(projectileSpawner.position, transform.rotation, playerbody.name + "b");
             fireTimer = FIRETIMER;
         }
     }

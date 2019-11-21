@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-public class GameSetupController : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     // This script will be added to any multiplayer scene
     public Transform[] spawnPoints = new Transform[4];
@@ -30,12 +30,12 @@ public class GameSetupController : MonoBehaviour
         GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), PSposition,PSrotation);
         bullet.name = name;
     }
-    public static GameSetupController GS;
+    public static GameController GS;
     private void OnEnable()
     {
-        if (GameSetupController.GS == null)
+        if (GameController.GS == null)
         {
-            GameSetupController.GS = this;
+            GameController.GS = this;
         }
     }
 
