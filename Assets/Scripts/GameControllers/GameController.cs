@@ -25,12 +25,6 @@ public class GameController : MonoBehaviour
         Debug.Log("Creating Player");
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), Vector3.zero, Quaternion.identity);
     }
-    public void CreateProjectile(Vector3 PSposition,Quaternion PSrotation, string name)
-    {
-        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), PSposition,PSrotation);
-        bullet.name = name;
-        Debug.Log("Creating Bullet");
-    }
     public static GameController GS;
     private void OnEnable()
     {
