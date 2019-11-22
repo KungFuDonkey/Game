@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     {
         GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), PSposition,PSrotation);
         bullet.name = name;
+        Debug.Log("Creating Bullet");
     }
     public static GameController GS;
     private void OnEnable()
