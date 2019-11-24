@@ -10,6 +10,7 @@ public class playerLook : MonoBehaviour
     private PhotonView PV;
     public Transform playerbody;
     public Transform camera;
+    private Animator animator;
     public Transform projectileSpawner;
     float yRotation = 0f;
     public float mouseSens;
@@ -17,6 +18,7 @@ public class playerLook : MonoBehaviour
     void Start()
     {
         PV = GetComponent<PhotonView>();
+        animator = playerbody.GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         if (!PV.IsMine)
         {
@@ -38,6 +40,7 @@ public class playerLook : MonoBehaviour
             fireTimer -= Time.deltaTime;
             if (Input.GetMouseButton(0) && fireTimer < 0)
             {
+                animator.SetInteger("AnimationIndex", 3);
                 GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation);
                 bullet.name = playerbody.name + "b";
                 Debug.Log("Creating Bullet");
