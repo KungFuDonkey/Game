@@ -403,7 +403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5271356224578802478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 369.33517, y: -3.4859452, z: 92.53319}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2871497231729746005}
@@ -505,7 +505,7 @@ MonoBehaviour:
   jumpspeed: 10
   gravity: 20
   mouseSens: 100
-  groundCeck: {fileID: 2871497231729746005}
+  groundCheck: {fileID: 2871497231729746005}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2

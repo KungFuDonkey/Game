@@ -18,7 +18,6 @@ public class ProjectileBehavior : MonoBehaviour
         PV = GetComponent<PhotonView>();
         controller = GetComponent<Rigidbody>();
         controller.velocity = transform.forward * speed * Time.deltaTime;
-        Debug.Log("bullet Created");
     }
 
     // Update is called once per frame
