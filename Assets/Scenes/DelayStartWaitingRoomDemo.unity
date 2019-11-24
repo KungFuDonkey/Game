@@ -1058,7 +1058,7 @@ PrefabInstance:
     - target: {fileID: 532509254343044274, guid: 3313bc95bcf645e4381c85090d77ef8c,
         type: 3}
       propertyPath: minPlayersToStart
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2041813619, guid: 3313bc95bcf645e4381c85090d77ef8c, type: 3}
       propertyPath: viewIdField
