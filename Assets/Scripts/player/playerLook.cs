@@ -9,8 +9,7 @@ public class playerLook : MonoBehaviour
     // Start is called before the first frame update
     private PhotonView PV;
     public Transform playerbody;
-    private Animator animator;
-    public Transform projectile;
+    public Transform camera;
     public Transform projectileSpawner;
     float yRotation = 0f;
     public float mouseSens;
@@ -19,29 +18,31 @@ public class playerLook : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         Cursor.lockState = CursorLockMode.Locked;
-        animator = GetComponent<Animator>();
         if (!PV.IsMine)
         {
-            Destroy(this.gameObject);
+            Destroy(camera.gameObject);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-
-        yRotation -= mouseY;
-        yRotation = Mathf.Clamp(yRotation, -90f, 90f);
-        transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
-        playerbody.Rotate(Vector3.up * mouseX);
-        fireTimer -= Time.deltaTime;
-        if (Input.GetMouseButton(0) && fireTimer < 0)
+        if (PV.IsMine)
         {
-            animator.SetInteger("AnimationIndex", 3);
-            GameSetupController.GS.CreateProjectile(projectileSpawner.position, transform.rotation, playerbody.name + "b");
-            fireTimer = FIRETIMER;
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
+            yRotation -= mouseY;
+            yRotation = Mathf.Clamp(yRotation, -90f, 90f);
+            transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+            playerbody.Rotate(Vector3.up * mouseX);
+            fireTimer -= Time.deltaTime;
+            if (Input.GetMouseButton(0) && fireTimer < 0)
+            {
+                GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation);
+                bullet.name = playerbody.name + "b";
+                Debug.Log("Creating Bullet");
+                fireTimer = FIRETIMER;
+            }
         }
     }
 }
