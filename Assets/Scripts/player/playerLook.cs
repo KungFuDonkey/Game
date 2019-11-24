@@ -9,6 +9,7 @@ public class playerLook : MonoBehaviour
     // Start is called before the first frame update
     private PhotonView PV;
     public Transform playerbody;
+    private Animator animator;
     public Transform projectile;
     public Transform projectileSpawner;
     float yRotation = 0f;
@@ -18,6 +19,7 @@ public class playerLook : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         Cursor.lockState = CursorLockMode.Locked;
+        animator = GetComponent<Animator>();
         if (!PV.IsMine)
         {
             Destroy(this.gameObject);
@@ -37,6 +39,7 @@ public class playerLook : MonoBehaviour
         fireTimer -= Time.deltaTime;
         if (Input.GetMouseButton(0) && fireTimer < 0)
         {
+            animator.SetInteger("AnimationIndex", 3);
             GameSetupController.GS.CreateProjectile(projectileSpawner.position, transform.rotation, playerbody.name + "b");
             fireTimer = FIRETIMER;
         }

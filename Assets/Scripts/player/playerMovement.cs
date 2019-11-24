@@ -9,6 +9,7 @@ public class playerMovement : MonoBehaviour
     // Start is called before the first frame update
     private PhotonView PV;
     CharacterController controller;
+    private Animator animator;
     public float speed;
     public float jumpspeed;
     public float gravity;
@@ -23,6 +24,7 @@ public class playerMovement : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
         if (!PV.IsMine)
         {
             Destroy(this);
@@ -51,7 +53,23 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-        controller.Move(movement * speed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            controller.Move(movement * 2 * speed * Time.deltaTime);
+            if(movement.x != 0 || movement.z != 0)
+                animator.SetInteger("AnimationIndex", 2);
+            else
+                animator.SetInteger("AnimationIndex", 0);
+        }
+        else
+        {
+            controller.Move(movement * speed * Time.deltaTime);
+            if (movement.x != 0 || movement.z != 0)
+                animator.SetInteger("AnimationIndex", 1);
+            else
+                animator.SetInteger("AnimationIndex", 0);
+
+        }
 
         velocity.y -= gravity * Time.deltaTime;
 
