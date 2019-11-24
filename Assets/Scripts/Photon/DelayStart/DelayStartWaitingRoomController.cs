@@ -102,6 +102,10 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
     {
         //called whenever a player leaves the room
         PlayerCountUpdate();
+        if (playerCount <= minPlayersToStart - 1)
+        {
+            ResetTimer();
+        }
     }
 
     private void Update()
@@ -111,7 +115,7 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
 
     void WaitingForMorePlayers()
     {
-        //If there is only one player in the room the timer will stop and reset
+        //If there is are not enough players in the room the timer will stop and reset
         if (playerCount <= minPlayersToStart - 1)
         {
             ResetTimer();
