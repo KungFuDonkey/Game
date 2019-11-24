@@ -116,7 +116,7 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
     void WaitingForMorePlayers()
     {
         //If there is only one player in the room the timer will stop and reset
-        if (playerCount < minPlayersToStart)
+        if (playerCount <= minPlayersToStart - 1)
         {
             ResetTimer();
         }

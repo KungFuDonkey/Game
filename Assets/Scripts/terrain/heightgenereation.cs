@@ -22,12 +22,6 @@ public class heightgenereation : MonoBehaviour
         pixelHeight = new float[data.heightmapWidth, data.heightmapHeight];
         CalcNoise();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     void CalcNoise()
     {
         float y = 0;
