@@ -11,7 +11,7 @@ public class playerMovement : MonoBehaviour
     public float gravity;
     public float mouseSens;
     Vector3 velocity;
-    public Transform groundCeck;
+    public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     bool isGrounded;
@@ -29,7 +29,7 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCeck.position, groundDistance, groundMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
